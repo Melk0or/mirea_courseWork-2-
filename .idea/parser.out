@@ -1,0 +1,79 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    COMMENT
+
+Grammar
+
+Rule 0     S' -> data
+Rule 1     data -> NUMBER
+Rule 2     data -> STRING
+Rule 3     data -> NAME
+Rule 4     empty -> <empty>
+Rule 5     program -> s_exp_list
+Rule 6     s_exp -> data
+Rule 7     s_exp -> LPAREN s_exp_list RPAREN
+Rule 8     s_exp_list -> s_exp s_exp_list
+Rule 9     s_exp_list -> s_exp
+Rule 10    s_exp_list -> empty
+
+Terminals, with rules where they appear
+
+COMMENT              : 
+LPAREN               : 7
+NAME                 : 3
+NUMBER               : 1
+RPAREN               : 7
+STRING               : 2
+error                : 
+
+Nonterminals, with rules where they appear
+
+data                 : 6 0
+empty                : 10
+program              : 
+s_exp                : 8 9
+s_exp_list           : 5 7 8
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . data
+    (1) data -> . NUMBER
+    (2) data -> . STRING
+    (3) data -> . NAME
+
+    NUMBER          shift and go to state 2
+    STRING          shift and go to state 3
+    NAME            shift and go to state 4
+
+    data                           shift and go to state 1
+
+state 1
+
+    (0) S' -> data .
+
+
+
+state 2
+
+    (1) data -> NUMBER .
+
+    $end            reduce using rule 1 (data -> NUMBER .)
+
+
+state 3
+
+    (2) data -> STRING .
+
+    $end            reduce using rule 2 (data -> STRING .)
+
+
+state 4
+
+    (3) data -> NAME .
+
+    $end            reduce using rule 3 (data -> NAME .)
+

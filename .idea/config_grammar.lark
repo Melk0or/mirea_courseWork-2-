@@ -1,0 +1,14 @@
+start: S_EXP_LIST
+
+%import common.CNAME
+%import common.INT
+%import common.ESCAPED_STRING
+%import common.WS
+
+%ignore WS
+
+S_EXP_LIST: "(" S_EXP* ")"
+S_EXP: INT -> number
+    | ESCAPED_STRING -> string
+    | CNAME -> name
+    | S_EXP_LIST -> list
