@@ -17,9 +17,20 @@ class ConfigLexer(Lexer):
 class ConfigParser(Parser):
     tokens = ConfigLexer.tokens
 
-    @_('s_exp')
+    @_('s_exp_list')
     def program(self, p):
+        return p.s_exp_list
+
+    @_('s_exp')
+    def s_exp_list(self, p):
         return p.s_exp
+
+    @_('s_exp s_exp_list')
+    def s_exp_list(self, p):
+        if p.s_exp_list is None:
+            return [p.s_exp]
+        else:
+            return [p.s_exp] + p.s_exp_list
 
     @_('data')
     def s_exp(self, p):
@@ -28,14 +39,6 @@ class ConfigParser(Parser):
     @_('LPAREN s_exp_list RPAREN')
     def s_exp(self, p):
         return p.s_exp_list
-
-    @_('s_exp s_exp')
-    def s_exp_list(self, p):
-        return [p.s_exp] + p.s_exp_list
-
-    @_('s_exp')
-    def s_exp_list(self, p):
-        return [p.s_exp]
 
     @_('NUMBER')
     def data(self, p):

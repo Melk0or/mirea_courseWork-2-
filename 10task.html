@@ -10,86 +10,47 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500&family=Montserrat:wght@300;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="shortcut icon" type="image/x-icon" href="/access/image/IMAGE.jpg">
-  <link rel="stylesheet" href="/access/css/style.css" type="text/css">
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/image/IMAGE.jpg">
+  <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
   <link rel="stylesheet" href="10task.css" type="text/css">
   <script src="../../Games/dsa/newproj/mogo_1/assets/js/ymap.js"></script>
   <script>
     function generateCaptcha() {
-      const captchaValue = Math.random() > 0.5 ? generateRandomLetters() : generateRandomSum();
-      document.getElementById('captcha').innerText = captchaValue;
-      document.getElementById('captchaInput').value = '';
-      document.getElementById('submitButton').disabled = true;
+      const isNumberCaptcha = Math.random() > 0.5;
+      const captchaElement = document.getElementById('captcha');
+      const captchaInput = document.getElementById('captchaInput');
 
-      const obj = {};
-      console.log(isEmpty(obj));
-    }
-
-    function generateRandomLetters() {
-      const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-      let captcha = '';
-      for (let i = 0; i < 6; i++) {
-        captcha += letters[Math.floor(Math.random() * letters.length)];
+      if (isNumberCaptcha) {
+        const num1 = Math.floor(Math.random() * 10);
+        const num2 = Math.floor(Math.random() * 10);
+        captchaElement.innerText = `${num1} + ${num2}`;
+        captchaInput.setAttribute('data-answer', num1 + num2);
+      } else {
+        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+        let captcha = '';
+        for (let i = 0; i < 6; i++) {
+          captcha += letters[Math.floor(Math.random() * letters.length)];
+        }
+        captchaElement.innerText = captcha;
+        captchaInput.setAttribute('data-answer', captcha.toLowerCase());
       }
-      return captcha;
-    }
 
-    function generateRandomSum() {
-      const num1 = Math.floor(Math.random() * 10);
-      const num2 = Math.floor(Math.random() * 10);
-      const sum = num1 + num2;
-      return `${num1} + ${num2} = ?`;
+      captchaInput.value = '';
+      //document.getElementById('submitButton').disabled = true;
+      errorMessage.innerText = '';
     }
 
     function checkCaptcha() {
-      const captchaInput = document.getElementById('captchaInput').value;
-      const captchaValue = document.getElementById('captcha').innerText;
-      // if(document.getElementById('captchaInput').value != '') {
-      //   document.getElementById('submitButton').disabled = false;
-      // }
-      //console.log(captchaInput.substring(0, 1));
-      if (isNaN(Number(captchaValue.substring(0, 1)))) {
-        document.getElementById('submitButton').addEventListener("click", function (e) {
-          // console.log(captchaInput);
-          // console.log(captchaValue);
-          if (captchaInput === captchaValue) {
-            alert("u are not the rayan gosling")
-            document.getElementById('captchaInput').value = '';
-            generateCaptcha();
-          } else {
-            console.log('Ошибка! Попробуйте еще раз.');
-            document.getElementById('captchaInput').value = '';
-            generateCaptcha();
-          }
-        })
-      }
+      const captchaInput = document.getElementById('captchaInput');
+      const userAnswer = captchaInput.value.toLowerCase();
+      const correctAnswer = captchaInput.getAttribute('data-answer');
 
-      else {
-        document.getElementById('submitButton').addEventListener("click", function (e) {
-          // console.log(captchaInput);
-          // console.log(captchaValue);
-
-          console.log(captchaValue.substring(0,1));
-          console.log(captchaValue.substring(4,5));
-          if (Number(captchaInput) === (Number(captchaValue.substring(0,1)) + Number(captchaValue.substring(4,5)))) {
-            alert("u are not the rayan gosling")
-            document.getElementById('captchaInput').value = '';
-            document.getElementById('captcha').innerText = '';
-            generateCaptcha();
-          } else {
-            alert('Ошибка! Попробуйте еще раз.');
-            document.getElementById('captchaInput').value = '';
-            document.getElementById('captcha').innerText = '';
-            generateCaptcha();
-          }
-        })
-      }
-
-    }
-
-    function removeDisabled () {
-      if(document.getElementById('captchaInput').value != '') {
-        document.getElementById('submitButton').disabled = false;
+      if (userAnswer === correctAnswer) {
+        alert('Капча пройдена! Можно отправлять форму.');
+        // Добавьте здесь код для отправки формы или выполнения других действий
+      } else {
+        errorMessage.innerText = 'Ошибка! Попробуйте еще раз.';
+        generateCaptcha();
       }
     }
 
@@ -101,6 +62,32 @@
       }
       return true;
     }
+
+    function Accumulator(startingValue) {
+      this.value = startingValue;
+
+      this.read = function() {
+        const userInput = parseFloat(prompt('Введите число:'));
+        if (!isNaN(userInput)) {
+          this.value += userInput;
+        } else {
+          alert('Вы ввели некорректное число.');
+        }
+      };
+    }
+    const accumulator = new Accumulator(0);
+   function onClickToCallPrompt() {
+      accumulator.read();
+      alert('Текущее значение: ' + accumulator.value);
+      document.querySelector("#cartCount").innerHTML = accumulator.value;
+    }
+
+    function truncate(id, maxlength) {
+      if (id.innerHTML.length > maxlength) {
+        id.innerHTML =  id.innerHTML.slice(0, maxlength - 1) + '…';
+      }
+    }
+
   </script>
 </head>
 <body>
@@ -110,7 +97,7 @@
       <div class="container head">
         <div class="title_inner">
           <div class="header-right">
-            <div class="header__logo"> <img src="/access/image/IMAGE.svg" alt="LOGO"></div>
+            <div class="header__logo"> <img src="/assets/image/IMAGE.svg" alt="LOGO"></div>
 
           </div>
           <div class="header-left">
@@ -124,13 +111,13 @@
               </ul>
             </nav>
             <div class="header__icon">
-              <img src="/access/image/facebookIcon.svg" alt="facebook" class="header__icon-item">
-              <img src="/access/image/twitterIcon.svg" alt="twitter" class="header__icon-item">
-              <img src="/access/image/linkedInIcon.svg" alt="linkedIn" class="header__icon-item">
+              <img src="/assets/image/facebookIcon.svg" alt="facebook" class="header__icon-item">
+              <img src="/assets/image/twitterIcon.svg" alt="twitter" class="header__icon-item">
+              <img src="/assets/image/linkedInIcon.svg" alt="linkedIn" class="header__icon-item">
             </div>
             <div class="header__button">
               <button class="header__reservation">
-                <img src="/access/image/reservationIcon.svg" alt="res">
+                <img src="/assets/image/reservationIcon.svg" alt="res">
                 <span>reservation</span>
               </button>
             </div>
@@ -140,30 +127,43 @@
     </div>
   </header>
   <main id="sector2">
-    <div class="main__inner">
-      <h1>Проверка пользователя (капча)</h1>
-      <p id="captcha"></p>
-      <input type="text" id="captchaInput" placeholder="Введите капчу" oninput="removeDisabled()">
-      <button onclick="checkCaptcha()" id="submitButton" disabled>Отправить</button>
-      <button onclick="generateCaptcha()">Сгенерировать новую капчу</button>
+      <div class="main__inner">
+        <div id="captcha-container">
+          <div id="captcha"></div>
+          <input type="text" id="captchaInput" placeholder="Введите капчу">
+          <button id="submitButton" onclick="checkCaptcha()">Отправить</button>
+          <button onclick="generateCaptcha()" >Сгенерировать капчу</button>
+          <div id="errorMessage"></div>
+      </div>
     </div>
   </main>
+  <section class="section2">
+    <p id="cartCount">0</p>
+    <button onclick="onClickToCallPrompt()">Добавить в корзину</button>
+  </section>
+  <section class="section2">
+    <div class="cart">
+      <div></div>
+      <p id="cartText">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio natus quasi rerum. Ab alias enim esse perspiciatis possimus. Cum deserunt ducimus eligendi ex incidunt ipsam iusto quasi quibusdam quis voluptatibus.</p>
+      <button onclick="truncate(document.querySelector('#cartText'), 40)">Сократить</button>
+    </div>
+  </section>
   <footer class="footer">
     <div class="container">
       <div class="footer__inner">
         <div class="footer-logo">
-          <img src="/access/image/footer-logo.svg" alt="footerLogo" class="footer-logo__item">
+          <img src="/assets/image/footer-logo.svg" alt="footerLogo" class="footer-logo__item">
           <div class="footer-logo__icon">
-            <a href="#"><img src="/access/image/footerItem2.svg" alt="twitter" class="footer-logo__icon-item"></a>
-            <a href="#"><img src="/access/image/footerItem3.svg" alt="linkedIn" class="footer-logo__icon-item"></a>
+            <a href="#"><img src="/assets/image/footerItem2.svg" alt="twitter" class="footer-logo__icon-item"></a>
+            <a href="#"><img src="/assets/image/footerItem3.svg" alt="linkedIn" class="footer-logo__icon-item"></a>
           </div>
           <div class="footer-logo__icon">
-            <a href="#"><img src="/access/image/footerItem2.svg" alt="twitter" class="footer-logo__icon-item"></a>
-            <a href="#"><img src="/access/image/footerItem3.svg" alt="linkedIn" class="footer-logo__icon-item"></a>
+            <a href="#"><img src="/assets/image/footerItem2.svg" alt="twitter" class="footer-logo__icon-item"></a>
+            <a href="#"><img src="/assets/image/footerItem3.svg" alt="linkedIn" class="footer-logo__icon-item"></a>
           </div>
           <div class="footer-logo__icon">
-            <a href="#"><img src="/access/image/footerItem2.svg" alt="twitter" class="footer-logo__icon-item"></a>
-            <a href="#"><img src="/access/image/footerItem3.svg" alt="linkedIn" class="footer-logo__icon-item"></a>
+            <a href="#"><img src="/assets/image/footerItem2.svg" alt="twitter" class="footer-logo__icon-item"></a>
+            <a href="#"><img src="/assets/image/footerItem3.svg" alt="linkedIn" class="footer-logo__icon-item"></a>
           </div>
         </div>
       </div>

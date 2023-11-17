@@ -10,6 +10,13 @@ body {
 h1, h2, h3, h4, h5, p {
     margin: 0;
 }
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
 h1::selection, h2::selection, h3::selection, h4::selection, h5::selection, p::selection, img::selection, span::selection, a::selection, button::selection {
     background-color: #5C8692;
 }
@@ -18,11 +25,7 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
 
-*,
-*:before,
-*:after {
-    box-sizing: border-box;
-}
+
 *::selection,
 *:after::selection,
 *:before::selection {
@@ -33,6 +36,7 @@ html,
 body {
     height: 100%;
 }
+
 a {
     text-decoration: none;
     color: #151515;
