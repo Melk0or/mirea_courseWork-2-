@@ -1,0 +1,189 @@
+
+.product_modal {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.23);
+}
+
+.product_modal__wrapper {
+  position: relative;
+}
+
+.product_modal__inner {
+  position: absolute;
+  top: 200px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 50%;
+  border-radius: 10px;
+  height: 555px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+.product_modal__image {
+  position: relative;
+  width: calc(100% - 60px);
+  height: 250px;  // 250 200 150 140
+  margin: 30px;
+  text-align: center;
+
+  img {
+    height: 100%;
+    border-radius: 10px;
+  }
+
+  svg {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+
+
+    &:hover {
+      fill: #1E2C30;
+      transform: scale(1.2) rotate(180deg);
+    }
+  }
+}
+
+.product_modal__title{
+  font-weight: 800;
+  font-size: 24px;
+  text-align: center;
+  margin: 5px 0;
+}
+
+.product_modal__subtitle{
+  text-align: justify;
+  font-size: 18px;
+  margin: 10px 20px;
+}
+
+.product_modal__price{
+  font-weight: 700;
+  font-size: 18px;
+  width: calc(100% - 40px);
+  margin: 10px 20px;
+
+  display: flex;
+
+  span:nth-child(2) {
+    flex-grow: 1;
+    border-bottom: 1px dotted #151515;
+    transform: translateY(-6px);
+  }
+}
+
+.product_modal__button {
+  width: 50%;
+  margin: 0 auto;
+  position: relative;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: #5c8591;
+  color: #ffffff;
+  transition: .4s ease-in-out;
+
+  svg {
+    position: absolute;
+    right: 20px;
+    transition: .4s ease-in-out;
+
+    path {
+      stroke: #ffffff;
+    }
+  }
+
+  &:hover {
+    background-color: #5b6b73;
+    transform: scale(1.05);
+    svg {
+      right: 10px;
+    }
+  }
+}
+
+
+@media screen and (max-width: 1470px) {
+
+  .product_modal__inner {
+    height: 600px;
+  }
+
+}
+@media screen and (max-width: 1150px) {
+
+  .product_modal__inner {
+    width: 75%;
+    height: 555px;
+  }
+
+}
+@media screen and (max-width: 980px) {
+
+  .product_modal__inner {
+    height: 600px;
+  }
+
+}
+@media screen and (max-width: 762px) {
+
+  .product_modal__inner {
+    width: 80%;
+  }
+
+}
+@media screen and (max-width: 715px) {
+
+  .product_modal__inner {
+    height: 650px;
+  }
+
+  .product_modal__button {
+    width: 75%;
+  }
+}
+@media screen and (max-width: 500px) {
+
+  .product_modal__image {
+    height: 200px;
+  }
+
+}
+@media screen and (max-width: 435px) {
+  .product_modal__inner {
+    width: 90%;
+  }
+
+  .product_modal__image {
+    height: 175px;
+  }
+
+  .product_modal__button {
+    width: 90%;
+  }
+
+}
+@media screen and (max-width: 340px) {
+
+  .product_modal__image {
+    height: 140px;
+  }
+
+}
+
+
+

@@ -1,0 +1,155 @@
+
+main {
+  background-color: #EBF3F5;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.main__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 120px auto;
+}
+
+.main__right {
+  width: 40%;
+}
+
+.main__left > img {
+  max-width: 600px;
+  min-width: 150px;
+  width: 100%;
+}
+
+.main__right-title {
+  font-family: 'Playfair Display';
+  font-weight: 400;
+  font-size: 55px;
+  line-height: 72px;
+  margin: 0 auto;
+}
+
+.main__right-subtitle {
+  font-size: 19px;
+  text-align: left;
+  margin: 20px 0;
+}
+
+.main__reservation {
+  border: none;
+  padding: 16px 32px;
+  min-width: 200px;
+  height: 55px;
+  font-size: 13px;
+  font-weight: 200;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  background-color: #5C8692;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+.main__reservation:hover {
+  background-color: #5b6b73;
+}
+
+
+.welcome-section {
+  display: flex;
+  gap: 10px;
+}
+.welcome__title {
+  font-size: 15px;
+  line-height: 22px;
+  color: #5C8692;
+  text-transform: uppercase;
+}
+
+
+
+/*ATTENTION*/
+
+
+.attention {
+  background-color: #EBF3F5;;
+  width: 100%;
+  padding: 100px 0;
+}
+
+.attention__inner {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.attention-left {
+  width: 50%;
+}
+
+.attention-right {
+  width: 50%;
+  text-align: right;
+}
+
+.attention-left > p {
+  color: #5C8692;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.attention-left__title {
+  color: #141414;
+  font-family: Playfair Display;
+  font-weight: 400;
+  font-size: 45px;
+  line-height: 58px;
+  letter-spacing: 0.5px;
+}
+
+.attention-left > .attention-left__subtitle {
+  color: #555;
+  font-size: 13px;
+  line-height: 22px;
+  margin-top: 10px;
+  text-align: justify;
+}
+
+.attention-left__icon {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 60px 0;
+}
+
+.attention-left__icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background-color: #fff;
+  border: 2px solid #1E2C30;
+  max-width: 150px;
+  width: 25%;
+  min-width: 50px;
+  padding:20px 50px;
+}
+
+.attention-left__icon-item > img {
+  max-height: 70px;
+  max-width: 70px;
+
+}
+
+.attention-left__icon-item > span:last-child {
+  margin-top: -10px;
+}
+
+
+.attention-right__image {
+  max-width: 500px;
+  min-width: 150px;
+  width: 100%;
+}

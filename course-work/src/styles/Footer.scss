@@ -1,0 +1,36 @@
+
+.footer {
+  background-color: #1E2C30;
+  width: 100%;
+}
+
+.footer__inner {
+  margin: 45px 0;
+}
+
+.footer-logo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 21px 0 40px 0  ;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.20);
+}
+
+.footer-logo__icon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-logo__icon-item {
+  padding: 20px;
+  width: 60px;
+  height: 60px;
+  border: 2px solid #5C8692;
+  transition: 0.4s ease;
+}
+
+.footer-logo__icon-item:hover {
+  border: 2px solid #1E2C30;
+}

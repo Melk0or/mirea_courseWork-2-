@@ -1,0 +1,252 @@
+
+input::placeholder, textarea::placeholder {
+  opacity: 40%;
+}
+
+textarea {
+  max-height: 300px;
+  height: 100%;
+  width: 100%;
+  border: none;
+  resize: none;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+.btn-submit {
+  position: absolute;
+  bottom: -2%;
+  z-index: 5;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  height: 50px;
+  background: #5c8591;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 600;
+  line-height: 50px;
+  color: #ffffff;
+  border: none;
+  font-size: 20px;
+  cursor: pointer ;
+}
+
+.btn-submit:before,
+.btn-submit:after,
+.btn-submit span:before,
+.btn-submit span:after {
+  content: '';
+  z-index: 4;
+  position: absolute;
+  width: 0px;
+  height: 2px;
+  background: #2a3c42;
+  transition: 1s;
+  mix-blend-mode: hue;
+}
+
+.btn-submit:before
+{
+  top: -2px;
+  left: -2px
+}
+.btn-submit:after
+{
+  top: -2px;
+  right: -2px;
+}
+.btn-submit span:before
+{
+  bottom: -2px;
+  left: -2px
+}
+.btn-submit span:after
+{
+  bottom: -2px;
+  right: -2px
+}
+
+.btn-submit:hover:before,
+.btn-submit:hover:after,
+.btn-submit:hover span:before,
+.btn-submit:hover span:after
+{
+  width: calc( 180px/1.9 );
+  height: calc( 50px/1.8 ) ;
+}
+
+
+/*contact-us*/
+
+.contact-us__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin: 110px 0 ;
+}
+
+
+.contact-us__promo-section {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  max-height: 170px;
+  overflow: hidden;
+  width: 100%;
+}
+
+
+.contact-us__promo-section-left {
+  background-color: #EBF3F5;
+  border-top: 2px solid #5C8692;
+  border-bottom: 2px solid #5C8692;
+  padding: 30px;
+  width: 60%;
+  max-height: 170px;
+  height: 100%;
+}
+
+
+.contact-us__promo-section-right {
+  background-color: #1E2C30;
+  padding: 25px;
+  width: 40%;
+  height: 100%;
+}
+
+.contact-us__promo-section-right__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-us__promo-section-right__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-us__promo-section-right__inner > p:first-child {
+  color: #ffffff;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+.contact-us__promo-section-right__inner > p:last-child {
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.contact-us__promo-section-right__title {
+  color: #ffffff;
+  font-size: 55px;
+  font-weight: 500;
+  line-height: 78px;
+}
+
+
+
+.contact-us__promo-section-item {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.contact-us__promo-section-item:first-child {
+  margin-bottom: 15px;
+}
+
+.contact-us-left {
+  width: 50%;
+}
+
+.contact-us-left > p:first-child {
+  color: #5C8692;
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.contact-us__title {
+  color: #141414;
+  font-size: 45px;
+  font-weight: 400;
+  line-height: 58px;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+
+.contact-us__subtitle {
+  color: #555;
+  font-size: 18px;
+  line-height: 30.6px; /* 170% */
+  margin-bottom: 50px;
+}
+
+
+.contact-us-right__inner {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  padding: 70px 50px;
+  box-shadow: 0px 0px 15px #d0c8c8;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+
+  }
+
+}
+
+@media screen and (max-width: 800px) {
+  .contact-us__inner {
+    flex-direction: column;
+  }
+  .contact-us__promo-section {
+
+  }
+  .contact-us-left {
+    width: 100%;
+  }
+
+  .contact-us-right {
+    width: 100%;
+  }
+
+  .contact-us-right__inner {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .contact-us__promo-section {
+    flex-direction: column;
+    max-height: none;
+  }
+  .contact-us__promo-section-left {
+    width: 100%;
+  }
+  .contact-us__promo-section-right {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .contact-us-right__inner {
+    padding: 70px 10px;
+  }
+  .wrapper {
+    overflow-x: hidden;
+  }
+}
+
+
+

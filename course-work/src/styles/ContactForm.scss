@@ -1,0 +1,23 @@
+
+.contact-us-right-item > input {
+  border: none;
+  outline: none;
+  min-height: 50px;
+  font-weight: 700;
+  font-size: 15px;
+}
+.contact-us-right-item .desc > input {
+  max-height: 20px;
+}
+
+.contact-us-right-item > input:focus {
+  border: none;
+
+}
+
+.contact-us-right-item {
+  display: flex;
+  align-items: center;
+  border: 2px solid #5C8692;
+  border-radius: 5px;
+}

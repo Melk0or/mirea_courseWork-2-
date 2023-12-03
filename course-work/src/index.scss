@@ -1,0 +1,81 @@
+body {
+  margin: 0;
+  font-family: 'Manrope'; /*Твой шрифт*/
+  font-size: 16px;
+  position: relative;
+  font-weight: 400;
+  color: #333;
+  line-height: 30px;
+}
+
+h1, h2, h3, h4, h5, p {
+  margin: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+h1::selection, h2::selection, h3::selection, h4::selection, h5::selection, p::selection, img::selection, span::selection, a::selection, button::selection {
+  background-color: #5C8692;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+
+*::selection,
+*:after::selection,
+*:before::selection{
+  background-color: #5C8692;
+}
+
+html,
+#root,
+body {
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: #151515;
+}
+
+ul {
+  list-style: none;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.container {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+._sticky {
+  position: fixed;
+  z-index: 10;
+  background-color: white;
+  margin: 0;
+  top: 0;
+  width: 100%
+
+}
+
+._sticky + main {
+  padding-top: 102px;
+}
+
+
+*::-webkit-scrollbar {
+  width: 0;
+}

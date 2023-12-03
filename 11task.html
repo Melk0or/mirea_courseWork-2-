@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <title>Bring the well</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500&family=Montserrat:wght@300;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/image/IMAGE.jpg">
+  <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
+  <link rel="stylesheet" href="11task.css" type="text/css">
+  <script src="../../Games/dsa/newproj/mogo_1/assets/js/ymap.js"></script>
+</head>
+<body>
+  <div class="wrapper">
+    <header id="sector1">
+      <div class="header-inner">
+        <div class="container head">
+          <div class="title_inner">
+            <div class="header-right">
+              <div class="header__logo"> <img src="/assets/image/IMAGE.svg" alt="LOGO"></div>
+
+            </div>
+            <div class="header-left">
+              <nav class="nav">
+                <ul class="header__navigation">
+                  <li><a href="#sector1" >Home</a></li>
+                  <li><a href="#sector1" >Price</a></li>
+                  <li><a href="#sector1" >Privilege</a></li>
+                  <li><a href="#sector2" >Contact Us</a></li>
+                  <li><a href="#sector2" >News</a></li>
+                </ul>
+              </nav>
+              <div class="header__icon">
+                <img src="/assets/image/facebookIcon.svg" alt="facebook" class="header__icon-item">
+                <img src="/assets/image/twitterIcon.svg" alt="twitter" class="header__icon-item">
+                <img src="/assets/image/linkedInIcon.svg" alt="linkedIn" class="header__icon-item">
+              </div>
+              <div class="header__button">
+                <button class="header__reservation">
+                  <img src="/assets/image/reservationIcon.svg" alt="res">
+                  <span>reservation</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main id="sector2">
+        <div class="main__inner">
+          <button onclick="startNotifications()">Start Notifications</button>
+          <span id="counter">0</span>
+          <div id="notCont"></div>
+          <button onclick="stopNotification()" id="stop">Stop Notification 10s</button>
+          <button onclick="createList()">Start Add ListItem</button>
+          <ul id="list"></ul>
+        </div>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__inner">
+          <div class="footer-logo">
+            <img src="/assets/image/footer-logo.svg" alt="footerLogo" class="footer-logo__item">
+            <div class="footer-logo__icon">
+              <a href="#"><img src="/assets/image/footerItem2.svg" alt="twitter" class="footer-logo__icon-item"></a>
+              <a href="#"><img src="/assets/image/footerItem3.svg" alt="linkedIn" class="footer-logo__icon-item"></a>
+            </div>
+            <div class="footer-logo__icon">
+              <a href="#"><img src="/assets/image/footerItem2.svg" alt="twitter" class="footer-logo__icon-item"></a>
+              <a href="#"><img src="/assets/image/footerItem3.svg" alt="linkedIn" class="footer-logo__icon-item"></a>
+            </div>
+            <div class="footer-logo__icon">
+              <a href="#"><img src="/assets/image/footerItem2.svg" alt="twitter" class="footer-logo__icon-item"></a>
+              <a href="#"><img src="/assets/image/footerItem3.svg" alt="linkedIn" class="footer-logo__icon-item"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+<script>
+  let notificationCounter = 0;
+  let notificationInterval;
+
+  function showNotification(options) {
+    const notificationDiv = document.createElement("div");
+    notificationDiv.className = "notification";
+    notificationDiv.textContent = options.content;
+
+    document.querySelector("#notCont").appendChild(notificationDiv);
+
+    setTimeout(() => {
+      document.querySelector("#notCont").removeChild(notificationDiv);
+    }, 1500);
+  }
+
+  function startNotifications() {
+    notificationInterval = setInterval(() => {
+      notificationCounter++;
+      document.getElementById("counter").innerText = String(notificationCounter);
+      showNotification({ content: `New notification #${notificationCounter}` });
+    }, 3000);
+
+  }
+
+  async function stopNotification() {
+    // Stop notifications after 10 seconds
+    clearInterval(notificationInterval);
+    setTimeout(() => {
+      notificationInterval = setInterval(() => {
+        notificationCounter++;
+        document.getElementById("counter").innerText = String(notificationCounter);
+        showNotification({ content: `New notification #${notificationCounter}` });
+      }, 3000);
+    }, 10000);
+  }
+
+
+
+
+
+   function createList() {
+    const list = document.getElementById("list");
+
+    while (true) {
+
+      const itemContent =  prompt("Enter item content:");
+
+      if (itemContent === null || itemContent === "") {
+        break;
+      }
+
+      const listItem = document.createElement("li");
+      listItem.textContent = itemContent;
+      list.appendChild(listItem);
+
+    }
+  }
+
+</script>
+</body>
+</html>
