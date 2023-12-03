@@ -97,3 +97,87 @@ header {
   align-items: center;
 }
 
+.burger__button, .burger__button__wrapper{
+  display: none;
+}
+
+
+@media screen and (max-width: 1310px) {
+  .header-right {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 1110px) {
+
+  .burger__button__wrapper {
+    display: block;
+    height: 9px;
+    width: 20px;
+    cursor: pointer;
+  }
+
+  .burger__button {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 3px;
+    transform: translateY(4px);
+
+    background-color: #000000;
+  }
+
+  .burger__button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 3px;
+    transform: translateY(-4px);
+    background-color: #000000;
+  }
+  .burger__button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 3px;
+    transform: translateY(4px);
+    background-color: #000000;
+  }
+
+  .nav {
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 10;
+    padding: 20px;
+    padding-top: 200px;
+    width: 100%;
+    height: 100%;
+    left: -100%;
+    right: 0;
+    overflow: auto;
+  }
+  .header__navigation {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+
+
+    .activeB {
+      transform: scale(0);
+    }
+
+    li {
+
+      a {
+        font-size: 30px;
+        color: white;
+        font-weight: 600;
+        text-wrap: nowrap;
+      }
+    }
+  }
+}

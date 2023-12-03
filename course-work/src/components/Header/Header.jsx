@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../styles/Header.scss";
 
 const Header = () => {
+  const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
   return (
     <header id="sector1">
       <div className="header-inner">
@@ -17,7 +18,10 @@ const Header = () => {
               </div>
             </div>
             <div className="header-left">
-              <nav className="nav">
+              <div onClick={() => setOpenBurgerMenu(prevState => !prevState)} className="burger__button__wrapper">
+                <span  className={"burger__button activeB"}></span>
+              </div>
+              <nav style={openBurgerMenu ? {left: "0"} : null} className="nav">
                 <ul className="header__navigation">
                   <li>
                     <a href="#sector1">Home</a>
