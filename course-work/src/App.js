@@ -8,6 +8,7 @@ import AppContext from "./context";
 import { Route, Routes } from "react-router";
 import ContactUs from "./components/Contact-us/Contact-us";
 import PricePage from "./pages/PricePage";
+import Privilege from "./pages/Privilege";
 
 function App() {
   const [productModalProps, setProductModalProps] = useState({});
@@ -27,6 +28,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/price" element={<PricePage />} />
+          <Route path="/privilege" element={<Privilege />} />
         </Routes>
         <Footer />
       </AppContext.Provider>

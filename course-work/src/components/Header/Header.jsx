@@ -1,8 +1,18 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "../../styles/Header.scss";
 
 const Header = () => {
   const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
+  const onClickToBurgerButton = () => {
+    setOpenBurgerMenu((prevState) => !prevState);
+    console.log(openBurgerMenu);
+    if (!openBurgerMenu) {
+      document.body.style.overflowY = "hidden";
+    } else {
+      document.body.style.overflowY = "";
+    }
+  };
+  const burgerButton = useRef(null);
   return (
     <header id="sector1">
       <div className="header-inner">
@@ -18,10 +28,21 @@ const Header = () => {
               </div>
             </div>
             <div className="header-left">
-              <div onClick={() => setOpenBurgerMenu(prevState => !prevState)} className="burger__button__wrapper">
-                <span  className={"burger__button activeB"}></span>
+              <div
+                onClick={onClickToBurgerButton}
+                className="burger__button__wrapper"
+              >
+                <span
+                  ref={burgerButton}
+                  className={
+                    openBurgerMenu ? "burger__button activeB" : "burger__button"
+                  }
+                ></span>
               </div>
-              <nav style={openBurgerMenu ? {left: "0"} : null} className="nav">
+              <nav
+                style={openBurgerMenu ? { left: "0" } : null}
+                className="nav"
+              >
                 <ul className="header__navigation">
                   <li>
                     <a href="#sector1">Home</a>
