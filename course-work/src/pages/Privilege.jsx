@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import ContactUs from "../components/Contact-us/Contact-us";
 import "../styles/Privilege.scss";
+import Review from "../components/Review/Review";
 
 const Privilege = () => {
   const [reviewsArr, setReviewsArr] = useState([]);
+  const [valueOfNameInput, setValueOfNameInput] = useState("");
+  const [valueOfLocationInput, setValueOfLocationInput] = useState([]);
+  const [valueOfTextarea, setValueOfLTextarea] = useState([]);
+  console.log(valueOfNameInput);
   return (
     <>
       <section className="privilegeSection">
@@ -77,30 +82,15 @@ const Privilege = () => {
                 <h2>What our Customers says...</h2>
               </div>
               <div className="reviewsSection__list">
-                <div className="reviewsSection__item">
-                  <p>dsdsds</p>
-                  <div>
-                    <div>
-                      <img src="/image/reviewsStars.png" alt="..." />
-                      <h6>dfsdfsdf</h6>
-                      <p>dfsdfdsfds</p>
-                    </div>
-                    <img src="/image/reviewsIMG.png" alt="..." />
-                  </div>
-                </div>
-                <div className="reviewsSection__item">
-                  <p>dsdsds</p>
-                  <div>
-                    <div>
-                      <img src="/image/reviewsStars.png" alt="..." />
-                      <h6>dfsdfsdf</h6>
-                      <p>dfsdfdsfds</p>
-                    </div>
-                    <img src="/image/reviewsIMG.png" alt="..." />
-                  </div>
-                </div>
+                <Review />
+                <Review />
+                <Review />
+                <Review />
+                
               </div>
-              <form action=""></form>
+              <form className="reviewItemForm">
+                <input type="text" name="name" value={valueOfNameInput} onChange={(e) => setValueOfNameInput(prevState => e.target.value )} />
+              </form>
             </div>
           </div>
         </div>
