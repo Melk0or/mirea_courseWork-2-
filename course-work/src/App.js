@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./index.scss";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -13,6 +13,16 @@ import Privilege from "./pages/Privilege";
 function App() {
   const [productModalProps, setProductModalProps] = useState({});
   const [isOpenProductModal, setIsOpenProductModal] = useState(false);
+  const contactLink = useRef(null);
+
+  const onCLickToLink = () => {
+    window.scrollTo({
+      top: contactLink.current.offsetTop,
+      left: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <div className="wrapper">
       <AppContext.Provider
@@ -20,7 +30,9 @@ function App() {
           productModalProps,
           setProductModalProps,
           isOpenProductModal,
+          onCLickToLink,
           setIsOpenProductModal,
+          contactLink,
         }}
       >
         {isOpenProductModal && <ProductModal {...productModalProps} />}

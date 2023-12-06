@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../styles/Home.scss";
 import Product from "../components/Product/Product";
 import product_arr from "../data/product_data";
 import ContactUs from "../components/Contact-us/Contact-us";
+import AppContext from "../context";
 
 const Home = () => {
+  const { onCLickToLink } = useContext(AppContext);
+
   return (
     <>
       <main id="sector2">
@@ -23,7 +26,9 @@ const Home = () => {
                 you return the favor in a way that benefits both your physical
                 and mental wellness.
               </p>
-              <button className="main__reservation">Make a reservation</button>
+              <button onClick={onCLickToLink} className="main__reservation">
+                Make a reservation
+              </button>
             </div>
             <div className="main__left">
               <img src="/image/mainPhoto.png" alt="Photo" />

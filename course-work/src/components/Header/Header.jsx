@@ -1,7 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import "../../styles/Header.scss";
+import { Link } from "react-router-dom";
+import AppContext from "../../context";
 
 const Header = () => {
+  const { onCLickToLink } = useContext(AppContext);
   const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
   const onClickToBurgerButton = () => {
     setOpenBurgerMenu((prevState) => !prevState);
@@ -12,16 +15,18 @@ const Header = () => {
       document.body.style.overflowY = "";
     }
   };
-  const burgerButton = useRef(null);
+
   return (
     <header id="sector1">
       <div className="header-inner">
         <div className="container head">
           <div className="title_inner">
             <div className="header-right">
-              <div className="header__logo">
-                <img src="/image/IMAGE.svg" alt="LOGO" />
-              </div>
+              <Link to="/">
+                <div className="header__logo">
+                  <img src="/image/IMAGE.svg" alt="LOGO" />
+                </div>
+              </Link>
               <div className="header__call-us">
                 <img src="/image/phoneIcon.svg" alt="phoneIcon" />
                 <a href="tel:89184395367">Call Us - (+7) 918 439 5367</a>
@@ -33,7 +38,6 @@ const Header = () => {
                 className="burger__button__wrapper"
               >
                 <span
-                  ref={burgerButton}
                   className={
                     openBurgerMenu ? "burger__button activeB" : "burger__button"
                   }
@@ -45,19 +49,19 @@ const Header = () => {
               >
                 <ul className="header__navigation">
                   <li>
-                    <a href="#sector1">Home</a>
+                    <Link to="/">Home</Link>
                   </li>
                   <li>
-                    <a href="#sector1">Price</a>
+                    <Link to="/price">Price</Link>
                   </li>
                   <li>
-                    <a href="#sector1">Privilege</a>
+                    <Link to="/privilege">Privilege</Link>
                   </li>
                   <li>
-                    <a href="#sector2">Contact Us</a>
+                    <Link to="/contact">Contact Us</Link>
                   </li>
                   <li>
-                    <a href="#sector2">Your reservations</a>
+                    <Link to="/reservations">Your reservations</Link>
                   </li>
                 </ul>
               </nav>
@@ -79,7 +83,7 @@ const Header = () => {
                 />
               </div>
               <div className="header__button">
-                <button className="header__reservation">
+                <button onClick={onCLickToLink} className="header__reservation">
                   <img src="/image/reservationIcon.svg" alt="res" />
                   <span>reservation</span>
                 </button>

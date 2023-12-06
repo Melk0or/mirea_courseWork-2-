@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../styles/PricePage.scss";
 import ContactUs from "../components/Contact-us/Contact-us";
+import AppContext from "../context";
 
 const PricePage = () => {
+  const { onCLickToLink } = useContext(AppContext);
+
   return (
     <>
       <section className="priceSection">
@@ -77,7 +80,7 @@ const PricePage = () => {
                       fading.
                     </p>
                   </div>
-                  <button className="priceDash__button">
+                  <button onClick={onCLickToLink} className="priceDash__button">
                     GET AN APPOINTMENT
                   </button>
                 </div>
@@ -134,7 +137,7 @@ const PricePage = () => {
                       definition.
                     </p>
                   </div>
-                  <button className="priceDash__button">
+                  <button onClick={onCLickToLink} className="priceDash__button">
                     GET AN APPOINTMENT
                   </button>
                 </div>

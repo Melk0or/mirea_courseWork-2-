@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../../styles/Contact.scss";
 import ContactForm from "../ContactForm/ContactForm";
+import AppContext from "../../context";
 
 const ContactUs = () => {
+  const { contactLink } = useContext(AppContext);
   return (
     <section className="contact-us">
       <div className="container">
@@ -43,7 +45,11 @@ const ContactUs = () => {
             </div>
           </div>
           <div className="contact-us-right">
-            <div className="contact-us-right__inner">
+            <div
+              ref={contactLink}
+              id="contact-us"
+              className="contact-us-right__inner"
+            >
               <ContactForm />
             </div>
           </div>

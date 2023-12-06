@@ -83,12 +83,13 @@
 }
 
 .reviewsSection__item {
-
+  width: 100%;
 
   p:first-child {
     padding: 30px;
     background-color: #ffffff;
-    min-height: 180px;
+    height: 180px;
+    overflow: auto;
   }
 
   div:last-child {
@@ -111,6 +112,116 @@
       font-size: 14px;
       line-height: 21px; /* 150% */
       letter-spacing: 0.42px;
+    }
+  }
+}
+
+
+.feedback {
+  margin-top: 70px;
+
+  button {
+    border: none;
+    outline: none;
+    background-color: #5c8490;
+    width: 150px;
+    height: 35px;
+    font-size: 12px;
+    color: #ffffff;
+    margin-top: 20px;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+
+    &:hover {
+      background-color: #70868a;
+      transform: scale(1.05);
+
+    }
+  }
+}
+
+
+.feedback__title {
+
+
+  h3 {
+    text-align: left;
+    font-family: Playfair Display;
+    font-size: 30px;
+    line-height: 58.5px; /* 130% */
+    letter-spacing: 0.45px;
+    text-transform: capitalize;
+  }
+}
+
+.feedbackForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  input, textarea {
+    font-family: Playfair Display;
+    font-weight: 600;
+    font-size: 16px;
+    width: 300px;
+    height: 40px;
+    padding: 10px;
+    border: none;
+    outline: none;
+
+    &:focus {
+      border: 1px solid #000000;
+    }
+  }
+}
+
+.feedbackForm {
+
+  textarea {
+    flex-grow: 1;
+    min-height: 150px;
+    font-weight: 400;
+    padding: 20px;
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .reviewsSection__list {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .privilegeSection__item {
+    text-align: center;
+  }
+  .privilegeSection__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 450px) {
+  .privilegeSection__list {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .feedbackForm {
+    textarea {
+      width: 100%;
+    }
+  }
+}
+
+
+.null {
+  grid-template-columns: repeat(1, 1fr);
+
+  div {
+    text-align: center;
+    margin: 0 auto;
+
+    h6 {
+      font-size: 20px;
+      margin: 0;
     }
   }
 }

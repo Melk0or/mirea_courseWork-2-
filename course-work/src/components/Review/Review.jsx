@@ -1,14 +1,15 @@
 import React from "react";
+import "../../styles/Privilege.scss";
 
-const Review = () => {
+const Review = (reviewProps) => {
   return (
     <div className="reviewsSection__item">
-      <p>dsdsds</p>
+      <p>{reviewProps.review}</p>
       <div>
         <div>
           <img src="/image/reviewsStars.png" alt="..." />
-          <h6>dfsdfsdf</h6>
-          <p>dfsdfdsfds</p>
+          <h6>{reviewProps.name}</h6>
+          <p>{reviewProps.location}</p>
         </div>
         <img src="/image/reviewsIMG.png" alt="..." />
       </div>
