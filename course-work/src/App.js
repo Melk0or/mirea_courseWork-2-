@@ -20,13 +20,20 @@ function App() {
   const contactLink = useRef(null);
 
   useEffect(() => {
+    //Достаем данные о прошлых записях с бекенда
     getData("https://65749a94b2fbb8f6509c6a0e.mockapi.io/reservations").then(
       (data) => {
         console.log(data);
         setReservationList((prevState) => data);
       }
     );
-    getData();
+     //Достаем данные о прошлых отзываъ с бекенда
+    getData("https://65749a94b2fbb8f6509c6a0e.mockapi.io/reviews").then(
+      (data) => {
+        console.log(data);
+        setReviewsArr((prevState) => data);
+      }
+    );
   }, []);
 
   const getData = async (url) => {
@@ -53,7 +60,7 @@ function App() {
     return res.json();
   };
 
-  const completeReservations = (obj, e) => {
+  const completeReservations = (obj) => {
     let [date, time] = new Date().toJSON().split("T");
     time = time.slice(0, -8);
     const updateObj = {
@@ -71,6 +78,21 @@ function App() {
     ).then((data) => setReservationList((prevState) => [...prevState, data]));
     // getData("https://65749a94b2fbb8f6509c6a0e.mockapi.io/reservations");
   };
+
+  const completeReviews = (obj) => {
+    const updateObj = {
+      name: obj.valueOfNameInput,
+      location: obj.valueOfLocationInput,
+      review: obj.valueOfTextarea,
+    };
+
+    postData(
+      "https://65749a94b2fbb8f6509c6a0e.mockapi.io/reviews",
+      updateObj
+    ).then((data) => setReviewsArr((prevState) => [...prevState, data]));
+    // getData("https://65749a94b2fbb8f6509c6a0e.mockapi.io/reservations");
+  };
+
 
   const deleteReservations = (url, id) => {
     setReservationList((prevState) =>
@@ -91,6 +113,7 @@ function App() {
     <div className="wrapper">
       <AppContext.Provider
         value={{
+          completeReviews,
           completeReservations,
           reservationList,
           productModalProps,

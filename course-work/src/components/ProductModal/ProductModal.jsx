@@ -3,11 +3,16 @@ import "./../../styles/ProductModal.scss";
 import AppContext from "../../context";
 
 const ProductModal = (modalProps) => {
-  const { setIsOpenProductModal } = useContext(AppContext);
+  const { setIsOpenProductModal, onCLickToLink } = useContext(AppContext);
   const onCLoseProductModal = () => {
     setIsOpenProductModal((prevState) => !prevState);
     document.body.style.overflowY = "";
   };
+
+  const goToReservation = () => {
+    onCLoseProductModal();
+    onCLickToLink();
+  }
 
   return (
     <div className="product_modal">
@@ -43,7 +48,7 @@ const ProductModal = (modalProps) => {
             <span></span>
             <span>{modalProps.price}$</span>
           </div>
-          <button className="product_modal__button">
+          <button onClick={goToReservation} className="product_modal__button">
             <span>go to reservation</span>
             <svg
               width="30px"
