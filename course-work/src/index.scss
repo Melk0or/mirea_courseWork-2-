@@ -79,3 +79,7 @@ ul {
 *::-webkit-scrollbar {
   width: 0;
 }
+
+main, section:nth-child(2) {
+  margin-top: 60px;
+}

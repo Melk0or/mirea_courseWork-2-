@@ -1,10 +1,12 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import ContactUs from "../components/Contact-us/Contact-us";
 import "../styles/Privilege.scss";
 import Review from "../components/Review/Review";
+import AppContext from "../context";
 
 const Privilege = () => {
-  const [reviewsArr, setReviewsArr] = useState([]);
+  const { reviewsArr, setReviewsArr } = useContext(AppContext);
+
   const [valueOfNameInput, setValueOfNameInput] = useState("");
   const [valueOfLocationInput, setValueOfLocationInput] = useState("");
   const [valueOfTextarea, setValueOfLTextarea] = useState("");

@@ -1,5 +1,8 @@
 header {
   width: 100%;
+  position: fixed;
+  background-color: #ffffff;
+  z-index: 15;
 }
 .header-inner {
   padding: 15px 0;

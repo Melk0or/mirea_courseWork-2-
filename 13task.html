@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500&family=Montserrat:wght@300;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
   <link rel="shortcut icon" type="image/x-icon" href="/assets/image/IMAGE.jpg">
   <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
-  <link rel="stylesheet" href="11task.css" type="text/css">
+  <link rel="stylesheet" href="12task.css" type="text/css">
   <script src="../../Games/dsa/newproj/mogo_1/assets/js/ymap.js"></script>
 </head>
 <body>
@@ -96,7 +96,7 @@
 
     setTimeout(() => {
       document.querySelector("#notCont").removeChild(notificationDiv);
-    }, 1500);
+    }, 3500);
   }
 
   function startNotifications() {
@@ -104,7 +104,7 @@
       notificationCounter++;
       document.getElementById("counter").innerText = String(notificationCounter);
       showNotification({ content: `New notification #${notificationCounter}` });
-    }, 3000);
+    }, 5000);
 
   }
 

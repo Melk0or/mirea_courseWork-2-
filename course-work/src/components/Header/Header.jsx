@@ -8,7 +8,6 @@ const Header = () => {
   const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
   const onClickToBurgerButton = () => {
     setOpenBurgerMenu((prevState) => !prevState);
-    console.log(openBurgerMenu);
     if (!openBurgerMenu) {
       document.body.style.overflowY = "hidden";
     } else {
@@ -49,19 +48,32 @@ const Header = () => {
               >
                 <ul className="header__navigation">
                   <li>
-                    <Link to="/">Home</Link>
+                    <Link onClick={() => window.scrollTo(0, 0)} to="/">
+                      Home
+                    </Link>
                   </li>
                   <li>
-                    <Link to="/price">Price</Link>
+                    <Link onClick={() => window.scrollTo(0, 0)} to="/price">
+                      Price
+                    </Link>
                   </li>
                   <li>
-                    <Link to="/privilege">Privilege</Link>
+                    <Link onClick={() => window.scrollTo(0, 0)} to="/privilege">
+                      Privilege
+                    </Link>
                   </li>
                   <li>
-                    <Link to="/contact">Contact Us</Link>
+                    <Link onClick={() => window.scrollTo(0, 0)} to="/contact">
+                      Contact Us
+                    </Link>
                   </li>
                   <li>
-                    <Link to="/reservations">Your reservations</Link>
+                    <Link
+                      onClick={() => window.scrollTo(0, 0)}
+                      to="/reservations"
+                    >
+                      Your reservations
+                    </Link>
                   </li>
                 </ul>
               </nav>

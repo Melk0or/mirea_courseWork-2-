@@ -1,0 +1,21 @@
+
+.contactSection {
+  width: 100%;
+  background-color: #eaf2f4;
+  padding: 50px 0;
+
+  iframe {
+    border: 1px solid rgba(0, 0, 0, 0.55);
+  }
+
+  span {
+    font-weight: 600;
+    display: inline-block;
+    backdrop-filter: blur(3px);
+    border-radius: 10px;
+    padding: 0 10px;
+    font-size: 18px;
+    letter-spacing: 1px;
+    transform: translate(10px, 14px);
+  }
+}

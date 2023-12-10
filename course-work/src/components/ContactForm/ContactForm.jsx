@@ -1,17 +1,48 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import "../../styles/ContactForm.scss";
+import AppContext from "../../context";
 
 const ContactForm = () => {
+  const { completeReservations } = useContext(AppContext);
+  const [nameInput, setNameInput] = useState("");
+  const [phoneInput, setPhoneInput] = useState("");
+  const [emailInput, setEmailInput] = useState("");
+  const [descInput, setDescInput] = useState("");
+
+  const onClickToSubButt = (e) => {
+    e.preventDefault();
+    completeReservations({
+      name: nameInput,
+      phone: phoneInput,
+      email: emailInput,
+      description: descInput,
+    });
+    setNameInput((prevState) => "");
+    setPhoneInput((prevState) => "");
+    setEmailInput((prevState) => "");
+    setDescInput((prevState) => "");
+  };
+
   return (
-    <form action="/price">
+    <form>
       <div className="contact-us-right-item">
         <img src="/image/contactUsPerson.svg" alt="iconPerson" />
-        <input type="text" name="" id="" placeholder="NAME" required />
+        <input
+          value={nameInput}
+          onChange={(e) => setNameInput((prevState) => e.target.value)}
+          type="text"
+          name=""
+          id=""
+          placeholder="NAME"
+          required
+        />
       </div>
       <div className="contact-us-right-item">
         <img src="/image/contactUsPhone.svg" alt="iconPhone" />
         <input
-          type="tel"
+          value={phoneInput}
+          onChange={(e) => setPhoneInput((prevState) => e.target.value)}
+          type="number"
           name="number"
           maxLength="11"
           id=""
@@ -22,6 +53,8 @@ const ContactForm = () => {
       <div className="contact-us-right-item">
         <img src="/image/contactUsMail.svg" alt="iconMail" />
         <input
+          value={emailInput}
+          onChange={(e) => setEmailInput((prevState) => e.target.value)}
           type="email"
           name=""
           id=""
@@ -32,6 +65,8 @@ const ContactForm = () => {
       <div className="contact-us-right-item desc">
         <img src="/image/contactUsDesc.svg" alt="iconDesc" />
         <textarea
+          value={descInput}
+          onChange={(e) => setDescInput((prevState) => e.target.value)}
           rows="5"
           cols="60"
           type="text"
@@ -41,7 +76,7 @@ const ContactForm = () => {
         ></textarea>
       </div>
 
-      <button className="btn-submit" type="submit">
+      <button onClick={(e) => onClickToSubButt(e)} className="btn-submit">
         <span></span>push
       </button>
     </form>

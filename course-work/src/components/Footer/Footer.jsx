@@ -15,13 +15,6 @@ const Footer = () => {
             <div className="footer-logo__icon">
               <a href="#">
                 <img
-                  src="/image/footerItem1.svg"
-                  alt="facebook"
-                  className="footer-logo__icon-item"
-                />
-              </a>
-              <a href="#">
-                <img
                   src="/image/footerItem2.svg"
                   alt="twitter"
                   className="footer-logo__icon-item"
@@ -31,13 +24,6 @@ const Footer = () => {
                 <img
                   src="/image/footerItem3.svg"
                   alt="linkedIn"
-                  className="footer-logo__icon-item"
-                />
-              </a>
-              <a href="#">
-                <img
-                  src="/image/footerItem4.svg"
-                  alt="instagram"
                   className="footer-logo__icon-item"
                 />
               </a>
