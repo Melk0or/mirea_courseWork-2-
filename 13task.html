@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500&family=Montserrat:wght@300;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
   <link rel="shortcut icon" type="image/x-icon" href="/assets/image/IMAGE.jpg">
   <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
-  <link rel="stylesheet" href="12task.css" type="text/css">
+  <link rel="stylesheet" href="13task.css" type="text/css">
   <script src="../../Games/dsa/newproj/mogo_1/assets/js/ymap.js"></script>
 </head>
 <body>
@@ -56,9 +56,6 @@
           <button onclick="startNotifications()">Start Notifications</button>
           <span id="counter">0</span>
           <div id="notCont"></div>
-          <button onclick="stopNotification()" id="stop">Stop Notification 10s</button>
-          <button onclick="createList()">Start Add ListItem</button>
-          <ul id="list"></ul>
         </div>
     </main>
     <footer class="footer">
@@ -86,15 +83,33 @@
 <script>
   let notificationCounter = 0;
   let notificationInterval;
+  //делегирование
+  document.querySelector("#notCont").addEventListener("click", function (e) {
+    if (e.target.classList.contains("closeButt")) {
+      const notification = e.target.closest(".notification");
+      if (notification) {
+        document.querySelector("#notCont").removeChild(document.querySelector(".notification"));
+      }
+    }
+  })
 
   function showNotification(options) {
-    const notificationDiv = document.createElement("div");
-    notificationDiv.className = "notification";
-    notificationDiv.textContent = options.content;
+      const notificationDiv = document.createElement("div");
+      notificationDiv.style.position = "relative";
+      const deleteNotification = document.createElement("span");
+      deleteNotification.className = "closeButt";
+      deleteNotification.textContent = "✖";
+      notificationDiv.className = "notification";
+      notificationDiv.textContent = options.content;
+      notificationDiv.appendChild(deleteNotification);
 
-    document.querySelector("#notCont").appendChild(notificationDiv);
+      document.querySelector("#notCont").appendChild(notificationDiv);
+      // deleteNotification.addEventListener("click", function (e) {
+      //   document.querySelector("#notCont").removeChild(notificationDiv);
+      // })
 
-    setTimeout(() => {
+      setTimeout(() => {
+        // deleteNotification.removeEventListener();
       document.querySelector("#notCont").removeChild(notificationDiv);
     }, 3500);
   }
@@ -104,43 +119,12 @@
       notificationCounter++;
       document.getElementById("counter").innerText = String(notificationCounter);
       showNotification({ content: `New notification #${notificationCounter}` });
-    }, 5000);
+    }, 3000);
 
   }
 
-  async function stopNotification() {
-    // Stop notifications after 10 seconds
-    clearInterval(notificationInterval);
-    setTimeout(() => {
-      notificationInterval = setInterval(() => {
-        notificationCounter++;
-        document.getElementById("counter").innerText = String(notificationCounter);
-        showNotification({ content: `New notification #${notificationCounter}` });
-      }, 3000);
-    }, 10000);
-  }
 
 
-
-
-
-   function createList() {
-    const list = document.getElementById("list");
-
-    while (true) {
-
-      const itemContent =  prompt("Enter item content:");
-
-      if (itemContent === null || itemContent === "") {
-        break;
-      }
-
-      const listItem = document.createElement("li");
-      listItem.textContent = itemContent;
-      list.appendChild(listItem);
-
-    }
-  }
 
 </script>
 </body>

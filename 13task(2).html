@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <title>Bring the well</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500&family=Montserrat:wght@300;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/image/IMAGE.jpg">
+  <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
+  <link rel="stylesheet" href="13task.css" type="text/css">
+  <script src="../../Games/dsa/newproj/mogo_1/assets/js/ymap.js"></script>
+</head>
+<body class="body">
+<div class="parallax-container">
+  <div class="parallax-bg"></div>
+  <div class="content">
+    <h1>Ваш заголовок</h1>
+    <p>Ваш текст</p>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const parallaxBg = document.querySelector('.parallax-bg');
+
+    window.addEventListener('scroll', function() {
+      let scrollPosition = window.scrollY;
+      parallaxBg.style.transform = 'translateY(' + scrollPosition * 0.6 + 'px)';
+    });
+  });
+
+</script>
+</body>
+</html>

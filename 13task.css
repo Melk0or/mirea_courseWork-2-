@@ -7,6 +7,10 @@
   height: 100% ;
 }
 
+main {
+  flex-grow: 1;
+}
+
 
 #sector2 {
   background-color: var(--main-color);
@@ -43,4 +47,73 @@
   width: 100%;
   border: 1px solid black;
   border-radius: 5px;
+}
+
+.closeButt {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+#centered-container {
+  position: absolute;
+}
+
+
+
+.body {
+  margin: 0;
+  padding: 0;
+  height: 150vh; /* Увеличьте высоту, чтобы было что прокручивать */
+  overflow-y: scroll;
+}
+
+.parallax-container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.parallax-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  background-image: url('assets/image/mainPhoto.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform-origin: center;
+  transform: translateZ(0);
+  will-change: transform; /* Оптимизация для производительности */
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+  text-align: center;
+  color: #000000;
+}
+
+
+.body {
+  margin: 0;
+  padding: 0;
+  height: 200vh; /* Увеличьте высоту, чтобы было что прокручивать */
+}
+
+.content {
+  position: relative;
+  opacity: 0.5;
+  transition: opacity 0.5s ease;
+}
+
+.visible {
+  opacity: 1;
 }

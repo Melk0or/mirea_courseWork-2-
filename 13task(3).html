@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <title>Bring the well</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500&family=Montserrat:wght@300;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/image/IMAGE.jpg">
+  <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
+  <link rel="stylesheet" href="13task.css" type="text/css">
+  <script src="../../Games/dsa/newproj/mogo_1/assets/js/ymap.js"></script>
+</head>
+<body class="body">
+<div class="content" id="content">
+  <!-- Ваш контент -->
+  <p>Прокрутите вниз, чтобы увидеть динамическое обновление.</p>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const content = document.getElementById('content');
+
+    window.addEventListener('scroll', function() {
+      let scrollPosition = window.scrollY;
+      let contentPosition = content.offsetTop;
+
+      // Проверка, если положение прокрутки достигло или прошло элемент
+      if (scrollPosition > contentPosition ) {
+        content.innerHTML += "<img src='assets/image/mainPhoto.png'>"
+        content.classList.add('visible');
+      }
+    });
+  });
+
+</script>
+</body>
+</html>

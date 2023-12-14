@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <title>Bring the well</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500&family=Montserrat:wght@300;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/image/IMAGE.jpg">
+  <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
+  <link rel="stylesheet" href="14task.css" type="text/css">
+  <script src="../../Games/dsa/newproj/mogo_1/assets/js/ymap.js"></script>
+</head>
+<body>
+<div id="slider">
+  <div id="sliderBar">
+    <div id="sliderHandle">
+    </div>
+  </div>
+</div>
+<button id="flashButton">Мигающая кнопка</button>
+<div id="fadeInElement">Появляющийся элемент</div>
+<div id="productContainer">
+  <div class="product" draggable="true" data-price="50">Товар 1 - $50</div>
+  <div class="product" draggable="true" data-price="30">Товар 2 - $30</div>
+  <div class="product" draggable="true" data-price="20">Товар 3 - $20</div>
+</div>
+<di   v id="cart">
+
+  <h2>Корзина</h2>
+  <div id="cartContent"></div>
+  <p id="totalPrice">Итого: $0</p>
+</div>
+
+
+</body>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const sliderBar = document.getElementById('sliderBar');
+    const sliderHandle = document.getElementById('sliderHandle');
+    let isDragging = false;
+
+    sliderHandle.addEventListener('mousedown', function(event) {
+      isDragging = true;
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
+    });
+
+    function handleMouseMove(event) {
+      if (isDragging) {
+        const sliderRect = sliderBar.getBoundingClientRect();
+        let newPosition = event.clientX - sliderRect.left;
+
+        // Ограничиваем положение бегунка в пределах полосы
+        newPosition = Math.max(0, Math.min(newPosition, sliderRect.width - sliderHandle.offsetWidth));
+
+        sliderHandle.style.left = newPosition + 'px';
+      }
+    }
+
+    function handleMouseUp() {
+      isDragging = false;
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+    }
+
+
+
+
+    const flashButton = document.getElementById('flashButton');
+    const fadeInElement = document.getElementById('fadeInElement');
+
+    // Анимация 1: Мигающая кнопка
+    setInterval(() => {
+      flashButton.style.backgroundColor = (flashButton.style.backgroundColor === 'red') ? 'green' : 'red';
+      flashButton.style.color = (flashButton.style.color === 'white') ? 'black' : 'white';
+    }, 1000);
+
+    // Анимация 2: Появляющийся элемент
+    fadeInElement.style.opacity = "0";
+    fadeInElement.style.display = 'block';
+
+    const fadeInInterval = setInterval(() => {
+      fadeInElement.style.opacity = parseFloat(fadeInElement.style.opacity) + 0.1;
+
+      if (parseFloat(fadeInElement.style.opacity) >= 1) {
+        clearInterval(fadeInInterval);
+      }
+    }, 100);
+    fadeInElement.addEventListener('click', function () {
+      fadeInElement.style.opacity = "0";
+      const fadeInInterval = setInterval(() => {
+        fadeInElement.style.opacity = parseFloat(fadeInElement.style.opacity) + 0.025;
+
+        if (parseFloat(fadeInElement.style.opacity) >= 1) {
+          clearInterval(fadeInInterval);
+        }
+      }, 100);
+    })
+
+
+
+
+    // Обработчики событий для перетаскивания
+    const products = document.querySelectorAll('.product'); // Выбираем все элементы с классом "product"
+    const cartContent = document.getElementById('cartContent'); // Получаем контейнер корзины
+    const totalPriceElement = document.getElementById('totalPrice'); // Получаем элемент для отображения итоговой стоимости
+    let totalPrice = 0; // Инициализируем переменную для хранения итоговой стоимости
+
+    // Присваиваем обработчик события dragstart каждому товару
+    products.forEach(product => {
+      product.addEventListener('dragstart', handleDragStart);
+    });
+
+    // Присваиваем обработчики событий для корзины
+    cartContent.addEventListener('dragover', handleDragOver);
+    cartContent.addEventListener('drop', handleDrop);
+
+    // Обработчик события dragstart при начале перетаскивания товара
+    function handleDragStart(event) {
+      event.dataTransfer.setData('text/plain', event.target.dataset.price); // Устанавливаем данные, которые будут передаваться в событии drop (цена товара)
+    }
+
+    // Обработчик события dragover, предотвращающий действие по умолчанию и разрешающий событие drop
+    function handleDragOver(event) {
+      event.preventDefault();
+    }
+
+    // Обработчик события drop при отпускании товара в корзину
+    function handleDrop(event) {
+      event.preventDefault();
+
+      const price = parseFloat(event.dataTransfer.getData('text/plain')); // Получаем цену товара из данных перетаскивания
+      totalPrice += price; // Увеличиваем итоговую стоимость
+
+      const newProduct = document.createElement('div'); // Создаем новый элемент для отображения товара в корзине
+      newProduct.innerText = `Товар - $${price}`; // Устанавливаем текст для нового элемента
+      cartContent.appendChild(newProduct); // Добавляем элемент в корзину
+
+      totalPriceElement.innerText = `Итого: $${totalPrice.toFixed(2)}`; // Обновляем отображение итоговой стоимости с округлением до двух знаков после запятой
+    }
+  });
+
+
+
+</script>
+</html>

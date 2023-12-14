@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <title>Bring the well</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500&family=Montserrat:wght@300;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/image/IMAGE.jpg">
+  <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
+  <link rel="stylesheet" href="14task.css" type="text/css">
+  <script src="../../Games/dsa/newproj/mogo_1/assets/js/ymap.js"></script>
+</head>
+<body>
+<ul id="selectableList">
+  <li>Элемент 1</li>
+  <li>Элемент 2</li>
+  <li>Элемент 3</li>
+  <!-- Добавьте нужное количество элементов -->
+</ul>
+
+</body>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const selectableList = document.getElementById('selectableList');
+    const listItems = selectableList.getElementsByTagName('li');
+
+    selectableList.addEventListener('click', function(event) {
+      const clickedListItem = event.target;
+      console.log(event);
+
+      // Проверяем, был ли клик по элементу списка
+      if (clickedListItem.tagName === 'LI') {
+        // Проверяем, удерживается ли клавиша Ctrl (или Cmd для Mac)
+        const isCtrlPressed = event.ctrlKey || event.metaKey;
+
+        // Снимаем выделение со всех элементов списка
+        if (!isCtrlPressed) {
+          for (const listItem of listItems) {
+            listItem.classList.remove('selected');
+          }
+        }
+
+        // Если Ctrl не удерживается, выделяем только кликнутый элемент
+        if (!isCtrlPressed) {
+          clickedListItem.classList.add('selected');
+        } else {
+          // Если Ctrl удерживается, переключаем выделение на кликнутом элементе
+          clickedListItem.classList.toggle('selected');
+        }
+      }
+    });
+  });
+
+</script>
+</html>
