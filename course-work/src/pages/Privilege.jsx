@@ -1,16 +1,16 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useState } from "react";
 import ContactUs from "../components/Contact-us/Contact-us";
 import "../styles/Privilege.scss";
 import Review from "../components/Review/Review";
 import AppContext from "../context";
 
 const Privilege = () => {
-  const { reviewsArr, setReviewsArr } = useContext(AppContext);
+  const { reviewsArr, completeReviews } = useContext(AppContext);
 
   const [valueOfNameInput, setValueOfNameInput] = useState("");
   const [valueOfLocationInput, setValueOfLocationInput] = useState("");
   const [valueOfTextarea, setValueOfLTextarea] = useState("");
-  console.log(reviewsArr);
+  // console.log(reviewsArr);
 
   const resetInputs = () => {
     setValueOfNameInput((prevState) => "");
@@ -19,12 +19,7 @@ const Privilege = () => {
   };
 
   const makeAReview = (obj) => {
-    const insertObj = {
-      name: obj.valueOfNameInput,
-      location: obj.valueOfLocationInput,
-      review: obj.valueOfTextarea,
-    };
-    setReviewsArr((prevState) => [...prevState, insertObj]);
+    completeReviews(obj);
     resetInputs();
   };
   return (
@@ -48,42 +43,37 @@ const Privilege = () => {
                 </div>
                 <div className="privilegeSection__item">
                   <img src="/image/privilegeIMG.png" alt="privilegeItem" />
-                  <h4>Built with you in mind</h4>
+                  <h4>The Perfect Salon Services</h4>
                   <p>
-                    We know how important it is to maintain strong relationships
-                    with clients.
+                    Talented, educated and fashion-forward artists meet the unique needs if client.
                   </p>
                 </div>
                 <div className="privilegeSection__item">
                   <img src="/image/privilegeIMG.png" alt="privilegeItem" />
-                  <h4>Built with you in mind</h4>
+                  <h4>Skin Deep Experirnces</h4>
                   <p>
-                    We know how important it is to maintain strong relationships
-                    with clients.
+                    Appropriate for all skin types, sun damage fine lines and wrinkles, ance, and oily.
                   </p>
                 </div>
                 <div className="privilegeSection__item">
                   <img src="/image/privilegeIMG.png" alt="privilegeItem" />
-                  <h4>Built with you in mind</h4>
+                  <h4>Essential Spa Pedicure</h4>
                   <p>
-                    We know how important it is to maintain strong relationships
-                    with clients.
+                    Indulge in a soothing foot bath aling with a callous smoothing exfoliating scrub.
                   </p>
                 </div>
                 <div className="privilegeSection__item">
                   <img src="/image/privilegeIMG.png" alt="privilegeItem" />
-                  <h4>Built with you in mind</h4>
+                  <h4>Skilled Spa Services</h4>
                   <p>
-                    We know how important it is to maintain strong relationships
-                    with clients.
+                    Our skilled estheticans an array of refreshing treatments.
                   </p>
                 </div>
                 <div className="privilegeSection__item">
                   <img src="/image/privilegeIMG.png" alt="privilegeItem" />
-                  <h4>Built with you in mind</h4>
+                  <h4>Perfect & Natural Products</h4>
                   <p>
-                    We know how important it is to maintain strong relationships
-                    with clients.
+                    We offer the very best and luxury beauty products for both hair and skin.
                   </p>
                 </div>
               </div>
@@ -144,6 +134,7 @@ const Privilege = () => {
                     }
                   />
                   <textarea
+                    maxLength={150}
                     name="text"
                     value={valueOfTextarea}
                     placeholder="Your rate..."

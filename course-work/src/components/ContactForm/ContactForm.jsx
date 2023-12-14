@@ -9,6 +9,14 @@ const ContactForm = () => {
   const [emailInput, setEmailInput] = useState("");
   const [descInput, setDescInput] = useState("");
 
+
+  const clearInputs = () => {
+    setNameInput((prevState) => "");
+    setPhoneInput((prevState) => "");
+    setEmailInput((prevState) => "");
+    setDescInput((prevState) => "");
+  };
+
   const onClickToSubButt = (e) => {
     e.preventDefault();
     completeReservations({
@@ -17,10 +25,8 @@ const ContactForm = () => {
       email: emailInput,
       description: descInput,
     });
-    setNameInput((prevState) => "");
-    setPhoneInput((prevState) => "");
-    setEmailInput((prevState) => "");
-    setDescInput((prevState) => "");
+    clearInputs();
+    
   };
 
   return (
@@ -44,6 +50,7 @@ const ContactForm = () => {
           onChange={(e) => setPhoneInput((prevState) => e.target.value)}
           type="number"
           name="number"
+          minLength="11"
           maxLength="11"
           id=""
           placeholder="+7 (777)-777-77-77"
@@ -65,6 +72,7 @@ const ContactForm = () => {
       <div className="contact-us-right-item desc">
         <img src="/image/contactUsDesc.svg" alt="iconDesc" />
         <textarea
+          maxLength={150}
           value={descInput}
           onChange={(e) => setDescInput((prevState) => e.target.value)}
           rows="5"

@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useState } from "react";
 import "../../styles/Header.scss";
 import { Link } from "react-router-dom";
 import AppContext from "../../context";
@@ -78,11 +78,6 @@ const Header = () => {
                 </ul>
               </nav>
               <div className="header__icon">
-                <img
-                  src="/image/facebookIcon.svg"
-                  alt="facebook"
-                  className="header__icon-item"
-                />
                 <img
                   src="/image/twitterIcon.svg"
                   alt="twitter"
